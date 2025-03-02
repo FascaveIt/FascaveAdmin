@@ -7,6 +7,7 @@ function Admin() {
   const [data, setData] = useState([]); // Initialize as an empty array
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,6 +29,11 @@ function Admin() {
 
     fetchData();
   }, []);
+
+ const handlelogout =()=>{
+    localStorage.removeItem("adminpassword")
+    window.location.reload()
+ }
 
   const dataSource = data.map((item) => ({
     key: item.id,
@@ -101,7 +107,7 @@ function Admin() {
           <h1 className="text-3xl font-bold text-gray-800">Fascave Admin</h1>
         </div>
         <div className="flex justify-center mb-6">
-          <button className="text-sm font-bold bg-gray-800 px-3 py-2 text-gray-50 rounded-2xl cursor-pointer" onClick={()=> localStorage.removeItem("adminpassword")
+          <button className="text-sm font-bold bg-gray-800 px-3 py-2 text-gray-50 rounded-2xl cursor-pointer" onClick={()=> handlelogout()
           }>Logout</button>
         </div>
       </div>
